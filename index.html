@@ -18,33 +18,34 @@
 				<!-- BEGIN Meal Details -->
 				<div class="meal-details component left">
 					<h2>Enter the Meal Details</h2>
-					<form ng-submit="submit(mealBasePrice, mealTaxRate, mealTipPercentage)">
-
+					<form name="myForm" ng-submit="submit(meal.basePrice, meal.taxRate, meal.tipPercentage)">
+						Pristine$ {{myForm.$pristine}}
 						<table>
 							<tr>
 								<td>Base Meal Price: $</td>
 								<td>
-									<input name="mealBasePrice" type="number" step=".01" ng-model="mealBasePrice" required>
+									<input name="mealBasePrice" type="number" step=".01" ng-model="meal.basePrice" required>
 								</td>
 							</tr>
 							<tr>
 								<td>Tax Rate: %</td>
 								<td>
-									<input name="mealTaxRate" type="number" ng-model="mealTaxRate" required>
+									<input name="mealTaxRate" type="number" ng-model="meal.taxRate" required>
 								</td>
 							</tr>
 							<tr>
 								<td>Tip Percentage: %</td>
 								<td>
-									<input name="mealTipPercentage" type="number" ng-model="mealTipPercentage" required>
+									<input name="mealTipPercentage" type="number" ng-model="meal.tipPercentage" required>
 								</td>
 							</tr>
 						</table>
 
 						<div class="button-cont">
-							<button ng-click="" value="submit">Submit</button>
+							<button value="submit">Submit</button>
 							<button ng-click="clearMealDetails()">Cancel</button>
 						</div>
+						<!-- <pre>form: {{meal | json}}</pre> -->
 					</form>
 				</div>
 				<!-- END Meal Details -->
@@ -59,7 +60,7 @@
 						</tr>
 						<tr class="under">
 							<td class="">Tip</td>
-							<td>{{chargesSubtotal | currency}}</td>
+							<td>{{chargesTip | currency}}</td>
 						</tr>
 						<tr>
 							<td>Total</td>
@@ -89,18 +90,6 @@
 						</tr>
 					</table>
 
-					<!-- <div class="label-cont">
-						<span class="label">Tip Total:</span>
-						<span class="output">{{earningsTipTotal | currency}}</span>
-					</div>
-					<div class="label-cont">
-						<span class="label">Meal Count:</span>
-						<span class="output">{{earningsMealCount | number}}</span>
-					</div>
-					<div class="label-cont">
-						<span class="label">Average Tip Per Meal:</span>
-						<span class="output">{{earningsAvgTipPerMeal | currency}}</span>
-					</div> -->
 				</div>
 				<!-- END Earnings Info -->
 

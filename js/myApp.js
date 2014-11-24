@@ -22,9 +22,10 @@ angular.module('myApp', [])
 			$scope.earningsAvgTipPerMeal = $scope.earningsTipTotal / $scope.earningsMealCount;
 		};
 		$scope.clearMealDetails = function(){
-			$scope.mealBasePrice = null;
-			$scope.mealTaxRate = null;
-			$scope.mealTipPercentage = null;
+			$scope.myForm.$setPristine();
+			$scope.meal.basePrice = null;
+			$scope.meal.taxRate = null;
+			$scope.meal.tipPercentage = null;
 		};
 		$scope.clearCustomerCharges = function(){
 			$scope.chargesSubtotal = null
@@ -37,9 +38,6 @@ angular.module('myApp', [])
 			$scope.clearMealDetails();
 		};
 		$scope.reset = function(){
-			$scope.clearMealDetails();
-			$scope.clearCustomerCharges();
-
 			$scope.earningsTipTotal = 0;
 			$scope.earningsMealCount = 0;
 			$scope.earningsAvgTipPerMeal = 0;
