@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+	<head>
+		<meta charset='utf-8'>
+		<meta name="viewport" content="initial-scale=1">
+        <meta name="description" content="">
+		<title>Waitstaff Calculator</title>
+		<!-- <link href="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.0.3/css/normalize.min.css" rel="stylesheet" type="text/css" /> -->
+		<link rel='stylesheet' href='css/reset.css'>
+		<link rel='stylesheet' href='css/style.css'>
+	</head>
+	<body ng-controller="WaitStaffCtrl">
+		<div class="container">
+			<h1>Waitstaff Calculator</h1>
+		</div>
+		<div class="container group">
+			<div class="main">
+				<!-- BEGIN Meal Details -->
+				<div class="meal-details component left">
+					<h2>Enter the Meal Details</h2>
+					<form ng-submit="submit(mealBasePrice, mealTaxRate, mealTipPercentage)">
+
+						<table>
+							<tr>
+								<td>Base Meal Price: $</td>
+								<td>
+									<input name="mealBasePrice" type="number" step=".01" ng-model="mealBasePrice" required>
+								</td>
+							</tr>
+							<tr>
+								<td>Tax Rate: %</td>
+								<td>
+									<input name="mealTaxRate" type="number" ng-model="mealTaxRate" required>
+								</td>
+							</tr>
+							<tr>
+								<td>Tip Percentage: %</td>
+								<td>
+									<input name="mealTipPercentage" type="number" ng-model="mealTipPercentage" required>
+								</td>
+							</tr>
+						</table>
+
+						<div class="button-cont">
+							<button ng-click="" value="submit">Submit</button>
+							<button ng-click="clearMealDetails()">Cancel</button>
+						</div>
+					</form>
+				</div>
+				<!-- END Meal Details -->
+
+				<!-- BEGIN Customer Charges -->
+				<div class="customer-charges component right">
+					<h2>Customer Charges</h2>
+					<table>
+						<tr>
+							<td>Subtotal</td>
+							<td>{{chargesSubtotal | currency}}</td>
+						</tr>
+						<tr class="under">
+							<td class="">Tip</td>
+							<td>{{chargesSubtotal | currency}}</td>
+						</tr>
+						<tr>
+							<td>Total</td>
+							<td>{{chargesTotal | currency}}</td>
+						</tr>
+					</table>
+
+				</div>
+				<!-- END Customer Charges -->
+
+				<!-- BEGIN Earnings Info -->
+				<div class="earnings-info component right">
+					<h2>My Earnings Info</h2>
+
+					<table>
+						<tr>
+							<td>Tip Total:</td>
+							<td>{{earningsTipTotal | currency}}</td>
+						</tr>
+						<tr>
+							<td>Meal Count:</td>
+							<td>{{earningsMealCount | number}}</td>
+						</tr>
+						<tr>
+							<td>Average Tip Per Meal:</td>
+							<td>{{earningsAvgTipPerMeal | currency}}</td>
+						</tr>
+					</table>
+
+					<!-- <div class="label-cont">
+						<span class="label">Tip Total:</span>
+						<span class="output">{{earningsTipTotal | currency}}</span>
+					</div>
+					<div class="label-cont">
+						<span class="label">Meal Count:</span>
+						<span class="output">{{earningsMealCount | number}}</span>
+					</div>
+					<div class="label-cont">
+						<span class="label">Average Tip Per Meal:</span>
+						<span class="output">{{earningsAvgTipPerMeal | currency}}</span>
+					</div> -->
+				</div>
+				<!-- END Earnings Info -->
+
+			</div>
+		</div>
+		<div class="container group">
+			<button class="right" ng-click="reset()">Reset</button>
+		</div>
+		
+
+
+
+		<script src="js/angular.min.js"></script>
+		<script src="js/myApp.js"></script>
+	</body>
+</html>
